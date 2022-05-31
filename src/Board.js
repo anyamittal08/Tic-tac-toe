@@ -51,11 +51,20 @@ const Board = () => {
     );
   };
 
+  const gameIsADraw = () => {
+    let isDraw = true
+    currentBoard.forEach((square) => {
+      if (!square) isDraw = false;
+    })
+    return isDraw
+  }
+
+
   return (
 
     <div className='game'>
         <div className='game-info'> 
-            {winner ? `${winner} wins!` : nextPlayerIsX ? 'Next Player: X' : 'Next Player: O'}
+            {winner ? `${winner} wins!` : gameIsADraw() ? 'It\'s a draw' : nextPlayerIsX ? 'Next Player: X' : 'Next Player: O'}
         </div>
         <table className="game-board">
         <tbody>
